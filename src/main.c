@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <sys/wait.h>
 #include "line.h"
 
 int main(void)
@@ -9,7 +7,7 @@ int main(void)
     {
         printf("nobu> ");
         char *line = read_line();
-        printf("%s", line);
+        printf("%s\n", line);
     }
 
     return 0;
