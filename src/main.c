@@ -1,28 +1,31 @@
 #include <stdio.h>
 #include "line.h"
+#include "execute.h"
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 int main(void)
 {
     while (1)
-    {
-        printf("nobu> ");
-        
+    {   
+        printf("nobushell>");
         char *line = read_line();
         char **args = parse(line);
-
-        int i = 0;
-
-        printf("%s\n", line);
-        printf("%s\n", args[0]);
-
-        while (args[i] != NULL)
+        
+        if (strcmp(args[0], "cd") == 0)
         {
-            printf("%s\n", args[i]);
-            i++;
+            cd_command(args);
+            
         }
-
+        else
+        {
+            exec_command(args);
+        }
+        
         free(args);
         free(line);
+
     }
 
 
